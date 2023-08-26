@@ -1,5 +1,5 @@
-import PrimeReactTextInput from "./components/core/PrimeReactTextInput";
+import InputText from "./components/core/InputText";
 
 export {
-    PrimeReactTextInput
+    InputText
 };
