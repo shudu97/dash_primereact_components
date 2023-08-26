@@ -6,7 +6,7 @@ import json
 
 import dash as _dash
 
-from . import theme
+# from . import theme
 
 # noinspection PyUnresolvedReferences
 from ._imports_ import *
@@ -38,14 +38,14 @@ _js_dist = []
 _js_dist.extend(
     [
         {
-            "relative_package_path": "dash_mantine_components.js",
+            "relative_package_path": "dash_primereact_components.js",
             "external_url": "https://unpkg.com/{0}@{2}/{1}/{1}.js".format(
                 package_name, __name__, __version__
             ),
             "namespace": package_name,
         },
         {
-            "relative_package_path": "dash_mantine_components.js.map",
+            "relative_package_path": "dash_primereact_components.js.map",
             "external_url": "https://unpkg.com/{0}@{2}/{1}/{1}.js.map".format(
                 package_name, __name__, __version__
             ),
@@ -63,4 +63,4 @@ for _component in __all__:
     setattr(locals()[_component], "_css_dist", _css_dist)
 
 
-__all__ += [theme]
+# __all__ += [theme]
