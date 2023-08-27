@@ -1,16 +1,15 @@
 {
     "name": "dash_primereact_components",
-    "version": "0.13.0a2",
+    "version": "0.0.1a1",
     "description": "Plotly Dash Components based on PrimeReact",
     "main": "index.ts",
     "repository": {
         "type": "git",
-        "url": "git://github.com/snehilvj/dash-mantine-components.git"
+        "url": "git:https://github.com/shudu97/dash_primereact_components.git"
     },
     "bugs": {
-        "url": "https://github.com/snehilvj/dash-mantine-components/issues"
+        "url": "https://github.com/shudu97/dash_primereact_components/issues"
     },
-    "homepage": "https://github.com/snehilvj/dash-mantine-components",
     "scripts": {
         "build:js::dev": "webpack --mode development",
         "build:js": "webpack",
@@ -38,15 +37,9 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
-    "author": "Snehil Vijay <snehilvj@outlook.com>",
+    "author": "Shuang Du",
     "license": "MIT",
     "dependencies": {
-        "@emotion/react": "^11.11.1",
-        "@mantine/core": "^6.0.15",
-        "@mantine/dates": "^6.0.15",
-        "@mantine/hooks": "^6.0.15",
-        "@mantine/notifications": "^6.0.15",
-        "@mantine/prism": "^6.0.15",
         "dash-extensions-js": "^0.0.8",
         "dayjs": "^1.11.9",
         "is-absolute-url": "^4.0.1"

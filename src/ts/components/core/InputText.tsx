@@ -1,8 +1,5 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import PropTypes from 'prop-types'
-import 'primereact/resources/primereact.min.css'
-import 'primereact/resources/themes/saga-blue/theme.css'
-
 import { InputText as PrimeReactInputText} from 'primereact/inputtext';
 import { KeyFilterType } from "primereact/keyfilter";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";

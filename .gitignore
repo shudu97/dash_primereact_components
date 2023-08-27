@@ -295,8 +295,7 @@ src/*.jl
 src/jl
 Project.toml
 
-
-
 dash_primereact_components/*
 !dash_primereact_components/__init__.py
 usage.py
+src/css/global.css
