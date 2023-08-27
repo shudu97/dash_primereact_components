@@ -17,9 +17,11 @@ type Props = {
     tooltip_options?: TooltipOptions; 
     icon?: ReactNode; 
     iconPosition?: string; 
-    className: string; 
-    label: string;
-    help_text: string; 
+    className?: string; 
+    label?: string;
+    help_text?: string; 
+    input_size?: 'sm' | 'md' | 'lg'; 
+    disabled?: boolean
 }
 
 /**
@@ -48,6 +50,7 @@ const InputText = (props: Props) => {
                 <span className={`p-input-icon-${props.iconPosition}`}>
                     {props.icon}
                     <PrimeReactInputText
+                        disabled={props.disabled}
                         id={props.id}
                         value={value} 
                         placeholder={props.placeholder} 
@@ -55,7 +58,7 @@ const InputText = (props: Props) => {
                         keyfilter={props.keyfilter}
                         tooltip={props.tooltip}
                         tooltipOptions={props.tooltip_options}
-                        className={props.className}
+                        className={`p-inputtext-${props.input_size} ${props.className}`}
                         aria-describedby={`help-${props.id}`}
                         {...props}
                     />
@@ -77,7 +80,9 @@ InputText.propTypes = {
     iconPosition: PropTypes.oneOf(["left", "right"]), 
     className: PropTypes.string, 
     label: PropTypes.string, 
-    help_text: PropTypes.string
+    help_text: PropTypes.string, 
+    input_size: PropTypes.string, 
+    disabled: PropTypes.bool
 }
 
 export default InputText;
