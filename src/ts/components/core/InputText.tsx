@@ -22,6 +22,7 @@ type Props = {
     help_text?: string; 
     input_size?: 'sm' | 'md' | 'lg'; 
     disabled?: boolean
+    isValid?: boolean
 }
 
 /**
@@ -58,7 +59,7 @@ const InputText = (props: Props) => {
                         keyfilter={props.keyfilter}
                         tooltip={props.tooltip}
                         tooltipOptions={props.tooltip_options}
-                        className={`p-inputtext-${props.input_size} ${props.className}`}
+                        className={`${props.className} p-inputtext-${props.input_size} ${props.isValid === false ? 'p-invalid' : ''}`}
                         aria-describedby={`help-${props.id}`}
                         {...props}
                     />
@@ -82,7 +83,8 @@ InputText.propTypes = {
     label: PropTypes.string, 
     help_text: PropTypes.string, 
     input_size: PropTypes.string, 
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool, 
+    isValid: PropTypes.bool
 }
 
 export default InputText;
