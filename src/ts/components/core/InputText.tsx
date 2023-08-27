@@ -22,7 +22,8 @@ type Props = {
     help_text?: string; 
     input_size?: 'sm' | 'md' | 'lg'; 
     disabled?: boolean
-    isValid?: boolean
+    isValid?: boolean, 
+    floating_label?: string
 }
 
 /**
@@ -48,7 +49,7 @@ const InputText = (props: Props) => {
         <div className={`flex flex-column gap-2`}>
             <label htmlFor={props.id}>{props.label}</label>
             <div>
-                <span className={`p-input-icon-${props.iconPosition}`}>
+                <span className={`p-input-icon-${props.iconPosition} p-float-label`}>
                     {props.icon}
                     <PrimeReactInputText
                         disabled={props.disabled}
@@ -63,6 +64,7 @@ const InputText = (props: Props) => {
                         aria-describedby={`help-${props.id}`}
                         {...props}
                     />
+                    <label htmlFor={props.id}>{props.floating_label}</label>
                 </span>
             </div>
             <small id={`help-${props.id}`}>{props.help_text}</small>
