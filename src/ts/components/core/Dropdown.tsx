@@ -12,7 +12,11 @@ type Props = {
     editable?: boolean; 
     filter?: boolean; 
     showclear?: boolean;
-    virtual_scroller_props?: VirtualScrollerProps
+    virtual_scroller_props?: VirtualScrollerProps; 
+    label?: string; 
+    floating_label?: boolean
+    valid?: boolean
+    disabled?: boolean
 }
 
 const Dropdown = (props: Props) => {
@@ -26,6 +30,10 @@ const Dropdown = (props: Props) => {
         filter, 
         showclear, 
         virtual_scroller_props, 
+        label, 
+        floating_label,
+        valid, 
+        disabled, 
         ...other
     } = props; 
 
@@ -44,21 +52,32 @@ const Dropdown = (props: Props) => {
     };
 
     return (
-        <PrimeReactDropdown
-            id={id}
-            value={val}
-            onChange={handleChange}
-            options={options}
-            optionLabel="label"
-            optionValue="value"
-            optionGroupLabel="label"
-            optionGroupChildren="items"
-            placeholder={placeholder}
-            editable={editable}      
-            filter={filter}  
-            showClear={showclear}
-            virtualScrollerOptions={virtual_scroller_props}
-        />
+        <div className={`flex flex-column gap-2`}>
+            {label && floating_label === false ? <label htmlFor={id}>{label}</label> : null}
+            <div>
+                <span className={`${floating_label ? 'p-float-label' : ''}`}>
+                    <PrimeReactDropdown
+                        id={id}
+                        value={val}
+                        onChange={handleChange}
+                        options={options}
+                        optionLabel="label"
+                        optionValue="value"
+                        optionGroupLabel="label"
+                        optionGroupChildren="items"
+                        placeholder={placeholder}
+                        editable={editable}      
+                        filter={filter}  
+                        showClear={showclear}
+                        virtualScrollerOptions={virtual_scroller_props}
+                        className={`${valid === false ? 'p-invalid' : ''}`}
+                        disabled={disabled}
+                        {...other}
+                    />
+                    {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
+                </span>
+            </div>
+        </div>
     )
 }
 
