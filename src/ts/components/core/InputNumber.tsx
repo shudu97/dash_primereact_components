@@ -3,18 +3,24 @@ import { InputNumber as PrimeReactInputNumber } from "primereact/inputnumber"
 
 type Props = {
     setProps: Function,
-    id?: string,  
-    value?: number, 
-    use_grouping?: boolean, 
-    min_fraction_digits?: number,
-    max_fraction_digits?: number,  
-    min_value?: number, 
-    max_value?: number, 
-    currency?: string, 
-    currency_code_display?: boolean, 
-    locale?: string, 
-    prefix?: string, 
-    suffix?: string
+    id?: string; 
+    value?: number; 
+    use_grouping?: boolean; 
+    min_fraction_digits?: number; 
+    max_fraction_digits?: number;  
+    min_value?: number; 
+    max_value?: number; 
+    currency?: string;  
+    currency_code_display?: boolean; 
+    locale?: string;  
+    prefix?: string; 
+    suffix?: string; 
+    show_buttons?: boolean; 
+    button_layout?; 
+    increment_button_icon?: string; 
+    increment_button_className?: string; 
+    decrement_button_icon?: string; 
+    decrement_button_className?: string; 
 }
 
 const InputNumber = (props: Props) => {
@@ -32,6 +38,12 @@ const InputNumber = (props: Props) => {
         locale, 
         prefix, 
         suffix, 
+        show_buttons, 
+        button_layout, 
+        increment_button_icon, 
+        increment_button_className, 
+        decrement_button_icon, 
+        decrement_button_className, 
         ...other
     } = props; 
 
@@ -65,6 +77,12 @@ const InputNumber = (props: Props) => {
             locale={locale}
             prefix={prefix}
             suffix={suffix}
+            showButtons={show_buttons}
+            buttonLayout={button_layout}
+            incrementButtonIcon={increment_button_icon}
+            incrementButtonClassName={increment_button_className}
+            decrementButtonIcon={decrement_button_icon}
+            decrementButtonClassName={decrement_button_className}
             {...other}
         />
     )
@@ -72,7 +90,8 @@ const InputNumber = (props: Props) => {
 }
 
 InputNumber.defaultProps = {
-    use_grouping: true
+    use_grouping: true, 
+    button_layout: 'stacked'
 }
 
 export default InputNumber
