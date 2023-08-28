@@ -10,7 +10,10 @@ type Props = {
     min_fraction_digits?: number,
     max_fraction_digits?: number,  
     min_value?: number, 
-    max_value?: number
+    max_value?: number, 
+    currency?: string, 
+    currency_code_display?: boolean, 
+    locale?: string
 }
 
 const InputNumber = (props: Props) => {
@@ -23,6 +26,9 @@ const InputNumber = (props: Props) => {
         max_fraction_digits, 
         min_value, 
         max_value, 
+        currency, 
+        currency_code_display, 
+        locale, 
         ...other
     } = props; 
 
@@ -39,7 +45,7 @@ const InputNumber = (props: Props) => {
             setProps({ value: newValue });
         }
     };
-
+    
     return (
         <PrimeReactInputNumber
             id={id}
@@ -50,6 +56,11 @@ const InputNumber = (props: Props) => {
             maxFractionDigits={max_fraction_digits}
             min={min_value}
             max={max_value}
+            mode={currency ? 'currency' : 'decimal'}
+            currency={currency ? currency : undefined}
+            currencyDisplay={currency_code_display === true ? "code" : undefined}
+            locale={locale}
+            {...other}
         />
     )
     
