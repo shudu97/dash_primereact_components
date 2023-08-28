@@ -112,7 +112,8 @@ const InputText = (props: Props) => {
 InputText.defaultProps = {
     icon_position: 'left', 
     input_size: 'md', 
-    className: ''
+    className: '', 
+    floating_label: false
 }
 
 export default InputText;
