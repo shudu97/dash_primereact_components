@@ -1,5 +1,5 @@
 import React, { ReactNode, useState, useEffect } from "react";
-import { InputText as PrimeReactInputText} from 'primereact/inputtext';
+import { InputText as PrimeReactInputText, InputTextPassThroughOptions} from 'primereact/inputtext';
 import { KeyFilterType } from "primereact/keyfilter";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 
@@ -36,6 +36,8 @@ type Props = {
     disabled?: boolean;
     /** Additional classes for styling the component */
     className?: string; 
+    /** Pass Through Options to component inside */
+    pt?: InputTextPassThroughOptions
 }
 
 /**
@@ -61,6 +63,7 @@ const InputText = (props: Props) => {
         valid,
         disabled,
         className,
+        pt, 
         ...other
     } = props;
 
@@ -95,6 +98,7 @@ const InputText = (props: Props) => {
                         tooltipOptions={tooltip_options}
                         className={`${className} p-inputtext-${input_size} ${valid === false ? 'p-invalid' : ''}`}
                         aria-describedby={help_text ? `help-${id}`: undefined}
+                        pt={pt}
                         {...other}
                     />
                     {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
