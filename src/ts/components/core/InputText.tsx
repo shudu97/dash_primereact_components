@@ -14,6 +14,14 @@ type Props = {
     placeholder?: string; 
     /** Type of key filter to use, limiting what characters can be entered */
     keyfilter?: KeyFilterType; 
+    /** Label text displayed above the input */
+    label?: string;
+    /** Whether to make the label floating */
+    floating_label?: boolean;
+    /** Helper text displayed below the input */
+    help_text?: string;
+    /** Size of the input, can be small, medium, or large */
+    input_size?: 'sm' | 'md' | 'lg'; 
     /** Tooltip text to display on hover */
     tooltip?: string; 
     /** Additional options for tooltip display */ 
@@ -22,20 +30,12 @@ type Props = {
     icon?: ReactNode;  
     /** Position of the icon inside the input */ 
     icon_position?: 'left' | 'right';  
-    /** Additional classes for styling the component */
-    className?: string;
-    /** Label text displayed above the input */
-    label?: string;
-    /** Helper text displayed below the input */
-    help_text?: string;
-    /** Size of the input, can be small, medium, or large */
-    input_size?: 'sm' | 'md' | 'lg'; 
-    /** Whether the input is disabled or not */
-    disabled?: boolean;
     /** Indicates if the input is in a valid state */
     valid?: boolean;
-    /** Whether to make the label floating */
-    floating_label?: boolean;
+    /** Whether the input is disabled or not */
+    disabled?: boolean;
+    /** Additional classes for styling the component */
+    className?: string; 
 }
 
 /**
@@ -50,17 +50,17 @@ const InputText = (props: Props) => {
         value,
         placeholder,
         keyfilter,
+        label,
+        floating_label,
+        help_text,
+        input_size,
         tooltip,
         tooltip_options,
         icon, 
         icon_position, 
-        className,
-        label,
-        help_text,
-        input_size,
-        disabled,
         valid,
-        floating_label,
+        disabled,
+        className,
         ...other
     } = props;
 
