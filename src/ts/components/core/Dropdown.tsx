@@ -6,7 +6,9 @@ type Props = {
     setProps: Function; 
     id?: string; 
     value?: string; 
-    options?: SelectItemOptionsType
+    options?: SelectItemOptionsType; 
+    placeholder?: string; 
+    editable?: boolean
 }
 
 const Dropdown = (props: Props) => {
@@ -15,6 +17,8 @@ const Dropdown = (props: Props) => {
         id, 
         value, 
         options, 
+        placeholder, 
+        editable, 
         ...other
     } = props; 
 
@@ -40,6 +44,10 @@ const Dropdown = (props: Props) => {
             options={options}
             optionLabel="label"
             optionValue="value"
+            optionGroupLabel="label"
+            optionGroupChildren="items"
+            placeholder={placeholder}
+            editable={editable}        
         />
     )
 }
