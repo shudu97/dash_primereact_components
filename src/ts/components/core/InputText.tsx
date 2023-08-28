@@ -1,32 +1,47 @@
 import React, { ReactNode, useState, useEffect } from "react";
-import PropTypes from 'prop-types'
 import { InputText as PrimeReactInputText} from 'primereact/inputtext';
 import { KeyFilterType } from "primereact/keyfilter";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 
 type Props = {
+    /** Function to update component state */
     setProps: Function; 
+    /** HTML id attribute for the input element */
     id?: string; 
-    value?: string;
-    placeholder?: string;
+    /** Current Value of the Input */ 
+    value?: string; 
+    /** Placeholder Text when the input is empty */
+    placeholder?: string; 
+    /** Type of key filter to use, limiting what characters can be entered */
     keyfilter?: KeyFilterType; 
-    tooltip?: string;
-    tooltip_options?: TooltipOptions; 
-    icon?: ReactNode; 
-    icon_position?: 'left' | 'right'; 
-    className?: string; 
+    /** Tooltip text to display on hover */
+    tooltip?: string; 
+    /** Additional options for tooltip display */ 
+    tooltip_options?: TooltipOptions;  
+    /** Optional icon to display in the input */
+    icon?: ReactNode;  
+    /** Position of the icon inside the input */ 
+    icon_position?: 'left' | 'right';  
+    /** Additional classes for styling the component */
+    className?: string;
+    /** Label text displayed above the input */
     label?: string;
-    help_text?: string; 
+    /** Helper text displayed below the input */
+    help_text?: string;
+    /** Size of the input, can be small, medium, or large */
     input_size?: 'sm' | 'md' | 'lg'; 
-    disabled?: boolean
-    valid?: boolean, 
-    floating_label?: string
+    /** Whether the input is disabled or not */
+    disabled?: boolean;
+    /** Indicates if the input is in a valid state */
+    valid?: boolean;
+    /** Whether to make the label floating */
+    floating_label?: boolean;
 }
 
 /**
- * InputText is a custom Dash Component built on top of PrimeReact's Input Text Component. 
- *
- */
+ * InputText is a custom Dash Component 
+ * built on top of PrimeReact's Input Text Component. 
+*/
 
 const InputText = (props: Props) => {
     const {
@@ -65,10 +80,10 @@ const InputText = (props: Props) => {
     
     return (
         <div className={`flex flex-column gap-2`}>
-            <label htmlFor={id}>{label}</label>
+            {label && floating_label === false ? <label htmlFor={id}>{label}</label> : null}
             <div>
-                <span className={`p-input-icon-${icon_position} p-float-label`}>
-                    {icon}
+                <span className={`${icon ? `p-input-icon-${icon_position}` : ''} ${floating_label ? 'p-float-label' : ''}`}>
+                    {icon ? icon : null}
                     <PrimeReactInputText
                         disabled={disabled}
                         id={id}
@@ -79,20 +94,21 @@ const InputText = (props: Props) => {
                         tooltip={tooltip}
                         tooltipOptions={tooltip_options}
                         className={`${className} p-inputtext-${input_size} ${valid === false ? 'p-invalid' : ''}`}
-                        aria-describedby={`help-${id}`}
+                        aria-describedby={help_text ? `help-${id}`: undefined}
                         {...other}
                     />
-                    <label htmlFor={id}>{floating_label}</label>
+                    {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
                 </span>
             </div>
-            <small id={`help-${id}`}>{help_text}</small>
+            {help_text ? <small id={`help-${id}`}>{help_text}</small> : null}
         </div>
     ); 
 }
 
 InputText.defaultProps = {
     icon_position: 'left', 
-    input_size: 'md'
+    input_size: 'md', 
+    className: ''
 }
 
 export default InputText;
