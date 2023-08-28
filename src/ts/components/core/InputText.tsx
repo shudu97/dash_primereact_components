@@ -13,77 +13,86 @@ type Props = {
     tooltip?: string;
     tooltip_options?: TooltipOptions; 
     icon?: ReactNode; 
-    iconPosition?: string; 
+    icon_position?: 'left' | 'right'; 
     className?: string; 
     label?: string;
     help_text?: string; 
     input_size?: 'sm' | 'md' | 'lg'; 
     disabled?: boolean
-    isValid?: boolean, 
+    valid?: boolean, 
     floating_label?: string
 }
 
 /**
  * InputText is a custom Dash Component built on top of PrimeReact's Input Text Component. 
+ *
  */
 
 const InputText = (props: Props) => {
-    const [value, setValue] = useState(props.value || ""); // initialize value
+    const {
+        setProps, 
+        id, 
+        value,
+        placeholder,
+        keyfilter,
+        tooltip,
+        tooltip_options,
+        icon, 
+        icon_position, 
+        className,
+        label,
+        help_text,
+        input_size,
+        disabled,
+        valid,
+        floating_label,
+        ...other
+    } = props;
+
+    const [val, setValue] = useState(value || ""); // initialize value
     
     useEffect(() => {
-      setValue(props.value); // update value when props.value changes
-    }, [props.value]);
+      setValue(value); // update value when props.value changes
+    }, [value]);
 
     const handleChange = (e) => {
         const newValue = e.target.value;
         setValue(newValue);
-        if (props.setProps) {
-            props.setProps({ value: newValue });
+        if (setProps) {
+            setProps({ value: newValue });
         }
     };
     
     return (
         <div className={`flex flex-column gap-2`}>
-            <label htmlFor={props.id}>{props.label}</label>
+            <label htmlFor={id}>{label}</label>
             <div>
-                <span className={`p-input-icon-${props.iconPosition} p-float-label`}>
-                    {props.icon}
+                <span className={`p-input-icon-${icon_position} p-float-label`}>
+                    {icon}
                     <PrimeReactInputText
-                        disabled={props.disabled}
-                        id={props.id}
-                        value={value} 
-                        placeholder={props.placeholder} 
+                        disabled={disabled}
+                        id={id}
+                        value={val} 
+                        placeholder={placeholder} 
                         onChange={handleChange}
-                        keyfilter={props.keyfilter}
-                        tooltip={props.tooltip}
-                        tooltipOptions={props.tooltip_options}
-                        className={`${props.className} p-inputtext-${props.input_size} ${props.isValid === false ? 'p-invalid' : ''}`}
-                        aria-describedby={`help-${props.id}`}
-                        {...props}
+                        keyfilter={keyfilter}
+                        tooltip={tooltip}
+                        tooltipOptions={tooltip_options}
+                        className={`${className} p-inputtext-${input_size} ${valid === false ? 'p-invalid' : ''}`}
+                        aria-describedby={`help-${id}`}
+                        {...other}
                     />
-                    <label htmlFor={props.id}>{props.floating_label}</label>
+                    <label htmlFor={id}>{floating_label}</label>
                 </span>
             </div>
-            <small id={`help-${props.id}`}>{props.help_text}</small>
+            <small id={`help-${id}`}>{help_text}</small>
         </div>
     ); 
 }
 
-InputText.propTypes = {
-    setProps: PropTypes.func, 
-    id: PropTypes.string, 
-    value: PropTypes.string, 
-    placeholder: PropTypes.string, 
-    keyfilter: PropTypes.string, 
-    tooltip: PropTypes.string, 
-    icon: PropTypes.object, 
-    iconPosition: PropTypes.oneOf(["left", "right"]), 
-    className: PropTypes.string, 
-    label: PropTypes.string, 
-    help_text: PropTypes.string, 
-    input_size: PropTypes.string, 
-    disabled: PropTypes.bool, 
-    isValid: PropTypes.bool
+InputText.defaultProps = {
+    icon_position: 'left', 
+    input_size: 'md'
 }
 
 export default InputText;
