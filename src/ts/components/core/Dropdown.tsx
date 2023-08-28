@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown as PrimeReactDropdown } from 'primereact/dropdown'
 import { SelectItemOptionsType } from "primereact/selectitem";
+import { VirtualScrollerProps } from "primereact/virtualscroller";
 
 type Props = {
     setProps: Function; 
@@ -8,7 +9,10 @@ type Props = {
     value?: string; 
     options?: SelectItemOptionsType; 
     placeholder?: string; 
-    editable?: boolean
+    editable?: boolean; 
+    filter?: boolean; 
+    showclear?: boolean;
+    virtual_scroller_props?: VirtualScrollerProps
 }
 
 const Dropdown = (props: Props) => {
@@ -19,6 +23,9 @@ const Dropdown = (props: Props) => {
         options, 
         placeholder, 
         editable, 
+        filter, 
+        showclear, 
+        virtual_scroller_props, 
         ...other
     } = props; 
 
@@ -47,7 +54,10 @@ const Dropdown = (props: Props) => {
             optionGroupLabel="label"
             optionGroupChildren="items"
             placeholder={placeholder}
-            editable={editable}        
+            editable={editable}      
+            filter={filter}  
+            showClear={showclear}
+            virtualScrollerOptions={virtual_scroller_props}
         />
     )
 }
