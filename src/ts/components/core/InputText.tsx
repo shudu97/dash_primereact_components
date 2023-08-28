@@ -40,7 +40,7 @@ type Props = {
 
 /**
  * InputText is a custom Dash Component 
- * built on top of PrimeReact's Input Text Component. 
+ * built on top of PrimeReact's InputText Component. 
 */
 
 const InputText = (props: Props) => {

@@ -2,31 +2,61 @@ import React, { useState, useEffect } from "react";
 import { InputNumber as PrimeReactInputNumber, InputNumberPassThroughOptions } from "primereact/inputnumber"
 
 type Props = {
+    /** Function to Set Props */
     setProps: Function,
+    /** ID of the input Element */
     id?: string; 
+    /** Initial Value */
     value?: number; 
+    /** Whether to use a thousands separator */
     use_grouping?: boolean; 
+    /** Minimum number of digits after the decimal point */
     min_fraction_digits?: number; 
+    /** Maximum number of digits after the decimal point */
     max_fraction_digits?: number;  
+    /** Minimum allowable value */
     min_value?: number; 
+    /** Maximum allowable value */
     max_value?: number; 
+    /** Currency Code */
     currency?: string;  
+    /** Whether to display the currency code instead of currency symbol */
     currency_code_display?: boolean; 
+    /** Locale for formatting */
     locale?: string;  
+    /** Text to display before the value */
     prefix?: string; 
+    /** Text to display after the value */
     suffix?: string; 
+    /** Whether to show the increment/decrement buttons */
     show_buttons?: boolean; 
+    /** Layout of increment/decrement buttons, can be horizontal, vertical or stacked */
     button_layout?; 
-    increment_button_icon?: string; 
+    /** Icon for the increment button */
+    increment_button_icon?: string;
+    /** ClassName for the increment button */ 
     increment_button_className?: string; 
+    /** Icon for the decrement button */
     decrement_button_icon?: string; 
+    /** ClassName for the decrement button */
     decrement_button_className?: string; 
+    /** Label of for the input field */
     label?: string; 
+    /** Whether to make the label floating */
     floating_label?: boolean; 
-    valid?: boolean; 
+    /** Indicates if the input is in a valid state */
+    valid?: boolean;
+    /** Whether the input is disabled or not */ 
     disabled?: boolean; 
+    /** Pass Through Options to components inside */
     pt?: InputNumberPassThroughOptions
 }
+
+/**
+ * InputNumber is a custom Dash Component 
+ * built on top of PrimeReact's InputNumber Component. 
+*/
+
 
 const InputNumber = (props: Props) => {
     const {
