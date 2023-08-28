@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { InputNumber as PrimeReactInputNumber } from "primereact/inputnumber"
-import { type } from "ramda";
 
 type Props = {
     setProps: Function,
@@ -13,7 +12,9 @@ type Props = {
     max_value?: number, 
     currency?: string, 
     currency_code_display?: boolean, 
-    locale?: string
+    locale?: string, 
+    prefix?: string, 
+    suffix?: string
 }
 
 const InputNumber = (props: Props) => {
@@ -29,6 +30,8 @@ const InputNumber = (props: Props) => {
         currency, 
         currency_code_display, 
         locale, 
+        prefix, 
+        suffix, 
         ...other
     } = props; 
 
@@ -60,6 +63,8 @@ const InputNumber = (props: Props) => {
             currency={currency ? currency : undefined}
             currencyDisplay={currency_code_display === true ? "code" : undefined}
             locale={locale}
+            prefix={prefix}
+            suffix={suffix}
             {...other}
         />
     )
