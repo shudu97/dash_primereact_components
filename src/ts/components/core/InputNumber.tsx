@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { InputNumber as PrimeReactInputNumber } from "primereact/inputnumber"
+import { InputNumber as PrimeReactInputNumber, InputNumberPassThroughOptions } from "primereact/inputnumber"
 
 type Props = {
     setProps: Function,
@@ -22,7 +22,10 @@ type Props = {
     decrement_button_icon?: string; 
     decrement_button_className?: string; 
     label?: string; 
-    floating_label?: boolean
+    floating_label?: boolean; 
+    valid?: boolean; 
+    disabled?: boolean; 
+    pt?: InputNumberPassThroughOptions
 }
 
 const InputNumber = (props: Props) => {
@@ -48,6 +51,9 @@ const InputNumber = (props: Props) => {
         decrement_button_className, 
         label, 
         floating_label, 
+        valid, 
+        disabled, 
+        pt, 
         ...other
     } = props; 
 
@@ -92,6 +98,9 @@ const InputNumber = (props: Props) => {
                         incrementButtonClassName={increment_button_className}
                         decrementButtonIcon={decrement_button_icon}
                         decrementButtonClassName={decrement_button_className}
+                        disabled={disabled}
+                        className={`${valid === false ? 'p-invalid' : ''}`}
+                        pt={pt}
                         {...other}
                     />            
                     {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
@@ -105,7 +114,8 @@ const InputNumber = (props: Props) => {
 InputNumber.defaultProps = {
     use_grouping: true, 
     button_layout: 'stacked', 
-    floating_label: false
+    floating_label: false, 
+    valid: true
 }
 
 export default InputNumber
