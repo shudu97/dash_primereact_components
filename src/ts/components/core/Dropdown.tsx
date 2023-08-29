@@ -25,7 +25,8 @@ type Props = {
     disabled?: boolean;
     scroll_height?: string; 
     tooltip?: string; 
-    tooltip_options?: TooltipOptions
+    tooltip_options?: TooltipOptions; 
+    pt
 }
 
 const Dropdown = (props: Props) => {
@@ -51,6 +52,7 @@ const Dropdown = (props: Props) => {
         scroll_height, 
         tooltip, 
         tooltip_options, 
+        pt, 
         ...other
     } = props; 
 
@@ -97,6 +99,7 @@ const Dropdown = (props: Props) => {
                         scrollHeight={scroll_height}
                         tooltip={tooltip}
                         tooltipOptions={tooltip_options}
+                        pt={pt}
                         {...other}
                     />
                     {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
