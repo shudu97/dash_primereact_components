@@ -1,33 +1,56 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown as PrimeReactDropdown } from 'primereact/dropdown'
+import { Dropdown as PrimeReactDropdown, DropdownPassThroughOptions } from 'primereact/dropdown'
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { VirtualScrollerProps } from "primereact/virtualscroller";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
 
 type Props = {
+    /** Function to update the properties from the parent component */
     setProps: Function; 
+    /** Unique identifier for the Dropdown component */
     id?: string; 
+    /** The value of the selected item */
     value?: string; 
+    /** The options available for selection */
     options?: SelectItemOptionsType; 
+    /** Placeholder text displayed when no value is selected */
     placeholder?: string; 
+    /** Boolean to control if the value can be manually edited */
     editable?: boolean; 
+    /** Boolean to enable or disable filtering */
     filter?: boolean; 
+    /** The mode for matching items in filter */
     filter_match_mode?; 
+    /** Placeholder text for the filter input */
     filter_placeholder?: string; 
+    /** Boolean to show or hide the filter clear button */
     show_filter_clear?: boolean; 
+    /** Boolean to show or hide the dropdown clear button */
     show_clear?: boolean;
+    /** Boolean to control if the dropdown should show on focus */
     show_on_focus?: boolean; 
+    /** Props related to virtual scrolling */
     virtual_scroller_props?: VirtualScrollerProps; 
+    /** Label displayed above the dropdown */
     label?: string; 
+    /** Boolean to enable or disable floating label */
     floating_label?: boolean; 
+    /** Boolean to mark the dropdown as required */
     required?: boolean; 
+    /** Boolean to indicate the validity of the dropdown */
     valid?: boolean; 
+    /** Boolean to enable or disable the dropdown */
     disabled?: boolean;
+    /** Controls the scroll height of the dropdown list */
     scroll_height?: string; 
+    /** Text for the tooltip */
     tooltip?: string; 
+    /** Options to customize the tooltip */
     tooltip_options?: TooltipOptions; 
-    pt
+    /** Additional pass-through options specific to the Dropdown */
+    pt?: DropdownPassThroughOptions; 
 }
+
 
 const Dropdown = (props: Props) => {
     const {
