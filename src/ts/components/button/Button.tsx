@@ -4,29 +4,77 @@ import { IconType } from 'primereact/utils'
 import { TooltipOptions } from 'primereact/tooltip/tooltipoptions'
 
 type Props = {
-    setProps: Function; 
-    id?: string; 
-    n_clicks?: number; 
-    label?: string; 
-    link?: boolean; 
-    icon?: IconType<ButtonProps>; 
-    icon_pos?; 
-    enable_loading?: boolean; 
-    loading?: boolean; 
-    loading_icon?: IconType<ButtonProps>; 
-    severity?; 
-    disabled?: boolean; 
-    raised?: boolean; 
-    rounded?: boolean; 
-    text?: boolean; 
+    /** A function to update the component's properties from the Dash callback */
+    setProps: Function;
+
+    /** The unique identifier for the button */
+    id?: string;
+
+    /** The number of times the button has been clicked */
+    n_clicks?: number;
+
+    /** The label displayed on the button */
+    label?: string;
+
+    /** A flag indicating whether the button should behave like a hyperlink */
+    link?: boolean;
+
+    /** An icon to be displayed on the button */
+    icon?: IconType<ButtonProps>;
+
+    /** Position of the icon in the button ('left' or 'right') */
+    icon_pos?;
+
+    /** Flag to enable the loading state when clicked */
+    enable_loading?: boolean;
+
+    /** Indicates whether the button is currently in the loading state */
+    loading?: boolean;
+
+    /** An icon to be displayed when the button is in the loading state */
+    loading_icon?: IconType<ButtonProps>;
+
+    /** Severity level for the button, usually for styling (e.g., 'info', 'error') */
+    severity?;
+
+    /** Flag indicating whether the button is disabled */
+    disabled?: boolean;
+
+    /** Flag to apply a 'raised' visual effect to the button */
+    raised?: boolean;
+
+    /** Flag to apply a 'rounded' visual effect to the button */
+    rounded?: boolean;
+
+    /** Flag to indicate the button should be displayed as text */
+    text?: boolean;
+
+    /** Flag to indicate the button should have an outlined style */
     outlined?: boolean;
-    badge?: string; 
-    badge_className?: string; 
-    size?; 
-    tooltip?: string; 
-    tooltip_options?: TooltipOptions; 
-    pt?: ButtonPassThroughOptions
+
+    /** Badge to be displayed on the button */
+    badge?: string;
+
+    /** Class name to apply for the badge */
+    badge_className?: string;
+
+    /** Size of the button ('small', 'medium', 'large') */
+    size?;
+
+    /** Tooltip to be displayed when hovered */
+    tooltip?: string;
+
+    /** Tooltip options for customization */
+    tooltip_options?: TooltipOptions;
+
+    /** Any additional attributes to be passed to the underlying component */
+    pt?: ButtonPassThroughOptions;
 }
+
+/**
+ * Button is a custom Dash Component
+ * built on top to PrimeReact's Button Component
+ */
 
 const Button = (props: Props) => {
     const {
