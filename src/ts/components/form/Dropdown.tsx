@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown as PrimeReactDropdown, DropdownPassThroughOptions } from 'primereact/dropdown'
+import { Dropdown as PrimeReactDropdown, DropdownPassThroughOptions, DropdownProps} from 'primereact/dropdown'
 import { SelectItemOptionsType } from "primereact/selectitem";
 import { VirtualScrollerProps } from "primereact/virtualscroller";
 import { TooltipOptions } from "primereact/tooltip/tooltipoptions";
+import { IconType } from "primereact/utils";
 
 type Props = {
     /** Function to update the properties from the parent component */
@@ -17,16 +18,24 @@ type Props = {
     placeholder?: string; 
     /** Boolean to control if the value can be manually edited */
     editable?: boolean; 
+    /** Icon of the dropdown */
+    dropdown_icon?: IconType<DropdownProps>; 
     /** Boolean to enable or disable filtering */
     filter?: boolean; 
     /** The mode for matching items in filter */
     filter_match_mode?; 
     /** Placeholder text for the filter input */
     filter_placeholder?: string; 
+    /** Icon of the filter to search */
+    filter_icon?: IconType<DropdownProps>; 
     /** Boolean to show or hide the filter clear button */
     show_filter_clear?: boolean; 
+    /** Icon of the filter to clear */
+    filter_clear_icon?: IconType<DropdownProps>; 
     /** Boolean to show or hide the dropdown clear button */
     show_clear?: boolean;
+    /** Icon of the dropdown to clear value */
+    clear_icon?: IconType<DropdownProps>; 
     /** Boolean to control if the dropdown should show on focus */
     show_on_focus?: boolean; 
     /** Props related to virtual scrolling */
@@ -60,11 +69,15 @@ const Dropdown = (props: Props) => {
         options, 
         placeholder, 
         editable, 
+        dropdown_icon, 
         filter, 
         filter_match_mode, 
         filter_placeholder, 
+        filter_icon, 
         show_filter_clear, 
+        filter_clear_icon, 
         show_clear, 
+        clear_icon, 
         show_on_focus, 
         virtual_scroller_props, 
         label, 
@@ -109,11 +122,15 @@ const Dropdown = (props: Props) => {
                         optionGroupChildren="items"
                         placeholder={placeholder}
                         editable={editable}      
+                        dropdownIcon={dropdown_icon}
                         filter={filter}  
                         filterMatchMode={filter_match_mode}
                         filterPlaceholder={filter_placeholder}
+                        filterIcon={filter_icon}
                         showFilterClear={show_filter_clear}
+                        filterClearIcon={filter_clear_icon}
                         showClear={show_clear}
+                        clearIcon={clear_icon}
                         showOnFocus={show_on_focus}
                         virtualScrollerOptions={virtual_scroller_props}
                         required={required}
