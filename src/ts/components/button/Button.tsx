@@ -10,6 +10,8 @@ type Props = {
     link?: boolean; 
     icon?: IconType<ButtonProps>; 
     icon_pos?; 
+    enable_loading?: boolean; 
+    loading?: boolean
 }
 
 const Button = (props: Props) => {
@@ -20,22 +22,32 @@ const Button = (props: Props) => {
         label, 
         link, 
         icon, 
-        icon_pos
+        icon_pos, 
+        enable_loading, 
+        loading
     } = props; 
 
     const [clicks, setClicks] = useState(n_clicks); 
+    const [internalloading, setInternalLoading] = useState(loading)
 
     useEffect(() => {
         setClicks(n_clicks); 
     }, [n_clicks]); 
 
+    useEffect(() => {
+        setInternalLoading(loading);
+    }, [loading]);
+
     const click = () => {
         const newClicks = clicks + 1; 
         setClicks(newClicks); 
         setProps({ n_clicks: newClicks }); 
+
+        if (enable_loading) {
+            setInternalLoading(true)
+        }
     }
 
- 
     return (
         <PrimeReactButton 
             id={id}
@@ -44,12 +56,14 @@ const Button = (props: Props) => {
             link={link}
             icon={icon}
             iconPos={icon_pos}
+            loading={internalloading}
         />
     )    
 }
 
 Button.defaultProps = {
-    n_clicks: 0
+    n_clicks: 0, 
+    enable_loading: false
 }
 
 export default Button
