@@ -6,10 +6,12 @@ import InputText from "./components/form/InputText";
 import InputNumber from "./components/form/InputNumber";
 import Dropdown from "./components/form/Dropdown";
 import CascadeSelect from "./components/form/CascadeSelect";
+import Button from "./components/button/Button";
 
 export {
     InputText, 
     InputNumber, 
     Dropdown, 
-    CascadeSelect
+    CascadeSelect, 
+    Button
 };
