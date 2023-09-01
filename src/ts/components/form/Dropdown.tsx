@@ -60,6 +60,10 @@ type Props = {
     pt?: DropdownPassThroughOptions; 
 }
 
+/**
+ * Dropdown is a custom Dash Component
+ * built on top of PrimeReact's Dropdown Component. 
+ */
 
 const Dropdown = (props: Props) => {
     const {
