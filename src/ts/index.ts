@@ -7,11 +7,13 @@ import InputNumber from "./components/form/InputNumber";
 import Dropdown from "./components/form/Dropdown";
 import CascadeSelect from "./components/form/CascadeSelect";
 import Button from "./components/button/Button";
+import SpeedDial from "./components/button/SpeedDial";
 
 export {
     InputText, 
     InputNumber, 
     Dropdown, 
     CascadeSelect, 
-    Button
+    Button, 
+    SpeedDial
 };
