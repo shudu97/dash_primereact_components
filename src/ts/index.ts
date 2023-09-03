@@ -8,6 +8,7 @@ import Dropdown from "./components/form/Dropdown";
 import CascadeSelect from "./components/form/CascadeSelect";
 import Button from "./components/button/Button";
 import SpeedDial from "./components/button/SpeedDial";
+import Knob from "./components/form/Knob";
 
 export {
     InputText, 
@@ -15,5 +16,6 @@ export {
     Dropdown, 
     CascadeSelect, 
     Button, 
-    SpeedDial
+    SpeedDial, 
+    Knob
 };
