@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TreeSelect as PrimeReactTreeSelect, TreeSelectSelectionKeysType } from 'primereact/treeselect';
+import { TreeSelect as PrimeReactTreeSelect, TreeSelectSelectionKeysType, TreeSelectPassThroughOptions } from 'primereact/treeselect';
 import { TreeNode } from 'primereact/treenode';
 import { Button, ButtonProps } from 'primereact/button';
 import { IconType } from 'primereact/utils';
@@ -14,7 +14,12 @@ type Props = {
     filter?: boolean;
     expandedKeys?: { [key: string]: boolean };
     expand_icon?:IconType<ButtonProps>; 
-    collapse_icon?: IconType<ButtonProps>
+    collapse_icon?: IconType<ButtonProps>; 
+    label?: string; 
+    floating_label?: boolean; 
+    valid?: boolean; 
+    disabled?: boolean; 
+    pt?: TreeSelectPassThroughOptions
 }
 
 const TreeSelect = (props: Props) => {
@@ -28,7 +33,13 @@ const TreeSelect = (props: Props) => {
         filter,
         expandedKeys: expandedKeysProp, 
         expand_icon, 
-        collapse_icon
+        collapse_icon, 
+        label, 
+        floating_label, 
+        valid, 
+        disabled, 
+        pt, 
+        ...other
     } = props;
 
     const [selectedNodeKey, setSelectedNodeKey] = useState(value);
@@ -89,18 +100,30 @@ const TreeSelect = (props: Props) => {
     );
 
     return (
-        <PrimeReactTreeSelect 
-            id={id}
-            value={selectedNodeKey}
-            onChange={handleChange}
-            options={options}
-            selectionMode={selection_mode}
-            metaKeySelection={meta_key_selection}
-            filter={filter}
-            expandedKeys={expandedKeys}
-            onToggle={handleToggle}
-            panelHeaderTemplate={headerTemplate}
-        />
+        <div className={`flex flex-column gap-2`}>
+            {label && floating_label === false ? <label htmlFor={id}>{label}</label> : null}
+            <div>
+                <span className={`${floating_label ? 'p-float-label' : ''}`}>
+                    <PrimeReactTreeSelect 
+                        id={id}
+                        value={selectedNodeKey}
+                        onChange={handleChange}
+                        options={options}
+                        selectionMode={selection_mode}
+                        metaKeySelection={meta_key_selection}
+                        filter={filter}
+                        expandedKeys={expandedKeys}
+                        onToggle={handleToggle}
+                        panelHeaderTemplate={headerTemplate}
+                        className={`${valid === false ? 'p-invalid' : ''}`}
+                        disabled={disabled}
+                        pt={pt}
+                        {...other}
+                    />
+                    {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
+                </span>
+            </div>
+        </div>
     )
 }
 
