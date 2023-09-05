@@ -9,6 +9,7 @@ import CascadeSelect from "./components/form/CascadeSelect";
 import Button from "./components/button/Button";
 import SpeedDial from "./components/button/SpeedDial";
 import Knob from "./components/form/Knob";
+import TreeSelect from "./components/form/TreeSelect";
 
 export {
     InputText, 
@@ -17,5 +18,6 @@ export {
     CascadeSelect, 
     Button, 
     SpeedDial, 
-    Knob
+    Knob, 
+    TreeSelect
 };
