@@ -9,9 +9,10 @@ type Props = {
     id?: string;
     options?: TreeNode[];
     value?: null | string | TreeSelectSelectionKeysType | TreeSelectSelectionKeysType[];
+    placeholder?:string; 
+    display?; 
     selection_mode?;
-    meta_key_selection?: boolean;
-    filter?: boolean; 
+    meta_key_selection?: boolean; 
     controlled?: boolean; 
     dropdown_icon?:IconType<TreeSelectProps>
     expandedKeys?: { [key: string]: boolean };
@@ -20,8 +21,13 @@ type Props = {
     label?: string; 
     floating_label?: boolean; 
     valid?: boolean; 
-    disabled?: boolean; 
+    disabled?: boolean;
     pt?: TreeSelectPassThroughOptions
+    // filter?: boolean; 
+    // filter_by?: string; 
+    // filter_mode?; 
+    // reset_filter_hide?: boolean; 
+    // empty_message?: string; 
 }
 
 const TreeSelect = (props: Props) => {
@@ -30,9 +36,10 @@ const TreeSelect = (props: Props) => {
         id,
         options,
         value,
+        placeholder, 
+        display, 
         selection_mode,
         meta_key_selection,
-        filter,
         controlled, 
         dropdown_icon, 
         expandedKeys: expandedKeysProp, 
@@ -44,6 +51,12 @@ const TreeSelect = (props: Props) => {
         disabled, 
         pt, 
         ...other
+        // Save for Future
+        // filter,
+        // filter_by, 
+        // filter_mode, 
+        // empty_message, 
+        // reset_filter_hide
     } = props;
 
     const [selectedNodeKey, setSelectedNodeKey] = useState(value);
@@ -111,11 +124,12 @@ const TreeSelect = (props: Props) => {
                     <PrimeReactTreeSelect 
                         id={id}
                         value={selectedNodeKey}
+                        placeholder={placeholder}
                         onChange={handleChange}
+                        display={display}
                         options={options}
                         selectionMode={selection_mode}
                         metaKeySelection={meta_key_selection}
-                        filter={filter}
                         dropdownIcon={dropdown_icon}
                         expandedKeys={expandedKeys}
                         onToggle={handleToggle}
@@ -124,6 +138,12 @@ const TreeSelect = (props: Props) => {
                         disabled={disabled}
                         pt={pt}
                         {...other}
+                        // Save for Future
+                        // filter={filter}
+                        // filterBy={filter_by}
+                        // filterMode={filter_mode}
+                        // resetFilterOnHide={reset_filter_hide}
+                        // emptyMessage={empty_message}
                     />
                     {label && floating_label === true ? <label htmlFor={id}>{label}</label> : null}
                 </span>
