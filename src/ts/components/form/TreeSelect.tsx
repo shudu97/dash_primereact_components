@@ -5,30 +5,71 @@ import { Button, ButtonProps } from 'primereact/button';
 import { IconType } from 'primereact/utils';
 
 type Props = {
+    /** A function to set the props of the component */
     setProps: Function;
+
+    /** A string representing the unique identifier of the component */
     id?: string;
+
+    /** An array representing the available options in the tree select */
     options?: TreeNode[];
+
+    /** The current selected value(s) */
     value?: null | string | TreeSelectSelectionKeysType | TreeSelectSelectionKeysType[];
-    placeholder?:string; 
-    display?; 
+
+    /** A string representing the placeholder text of the component */
+    placeholder?: string;
+
+    /** A prop controlling the display property of the TreeSelect component */
+    display?;
+
+    /** A prop indicating the selection mode of the TreeSelect component */
     selection_mode?;
-    meta_key_selection?: boolean; 
-    controlled?: boolean; 
-    dropdown_icon?:IconType<TreeSelectProps>
+
+    /** A boolean indicating whether meta key selection is enabled */
+    meta_key_selection?: boolean;
+
+    /** A boolean indicating whether the TreeSelect component is controlled */
+    controlled?: boolean;
+
+    /** The icon type for the dropdown icon */
+    dropdown_icon?: IconType<TreeSelectProps>;
+
+    /** An object representing the expanded state of each key in the TreeSelect component */
     expandedKeys?: { [key: string]: boolean };
-    expand_icon?:IconType<ButtonProps>; 
-    collapse_icon?: IconType<ButtonProps>; 
-    label?: string; 
-    floating_label?: boolean; 
-    valid?: boolean; 
+
+    /** The icon type for the expand icon */
+    expand_icon?: IconType<ButtonProps>;
+
+    /** The icon type for the collapse icon */
+    collapse_icon?: IconType<ButtonProps>;
+
+    /** A string representing the label of the component */
+    label?: string;
+
+    /** A boolean indicating whether the label is floating */
+    floating_label?: boolean;
+
+    /** A boolean indicating the validity of the component */
+    valid?: boolean;
+
+    /** A boolean indicating whether the component is disabled */
     disabled?: boolean;
-    pt?: TreeSelectPassThroughOptions
+
+    /** A prop containing pass-through options for the TreeSelect component */
+    pt?: TreeSelectPassThroughOptions;
+
     // filter?: boolean; 
     // filter_by?: string; 
     // filter_mode?; 
     // reset_filter_hide?: boolean; 
     // empty_message?: string; 
 }
+
+/** 
+ * Tree Select is a custom Dash Component
+ * built on top of PrimeReact's TreeSelect Component.
+ */
 
 const TreeSelect = (props: Props) => {
     const {
