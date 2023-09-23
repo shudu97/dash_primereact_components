@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TreeSelect as PrimeReactTreeSelect, TreeSelectSelectionKeysType, TreeSelectPassThroughOptions } from 'primereact/treeselect';
+import { TreeSelect as PrimeReactTreeSelect, TreeSelectSelectionKeysType, TreeSelectPassThroughOptions, TreeSelectProps } from 'primereact/treeselect';
 import { TreeNode } from 'primereact/treenode';
 import { Button, ButtonProps } from 'primereact/button';
 import { IconType } from 'primereact/utils';
@@ -11,7 +11,9 @@ type Props = {
     value?: null | string | TreeSelectSelectionKeysType | TreeSelectSelectionKeysType[];
     selection_mode?;
     meta_key_selection?: boolean;
-    filter?: boolean;
+    filter?: boolean; 
+    controlled?: boolean; 
+    dropdown_icon?:IconType<TreeSelectProps>
     expandedKeys?: { [key: string]: boolean };
     expand_icon?:IconType<ButtonProps>; 
     collapse_icon?: IconType<ButtonProps>; 
@@ -31,6 +33,8 @@ const TreeSelect = (props: Props) => {
         selection_mode,
         meta_key_selection,
         filter,
+        controlled, 
+        dropdown_icon, 
         expandedKeys: expandedKeysProp, 
         expand_icon, 
         collapse_icon, 
@@ -93,7 +97,7 @@ const TreeSelect = (props: Props) => {
     };
 
     const headerTemplate = (
-        <div className="p-3 pb-0">
+        <div className="p-3 pb-0" hidden={!controlled}>
             <Button type="button" icon={expand_icon} onClick={expandAll} className="w-2rem h-2rem mr-2 p-button-outlined" />
             <Button type="button" icon={collapse_icon} onClick={collapseAll} className="w-2rem h-2rem p-button-outlined" />
         </div>
@@ -112,6 +116,7 @@ const TreeSelect = (props: Props) => {
                         selectionMode={selection_mode}
                         metaKeySelection={meta_key_selection}
                         filter={filter}
+                        dropdownIcon={dropdown_icon}
                         expandedKeys={expandedKeys}
                         onToggle={handleToggle}
                         panelHeaderTemplate={headerTemplate}
