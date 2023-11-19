@@ -11,6 +11,7 @@ import SpeedDial from "./components/button/SpeedDial";
 import Knob from "./components/form/Knob";
 import TreeSelect from "./components/form/TreeSelect";
 import Checkbox from "./components/form/Checkbox";
+import Carousel from "./components/media/Carousel";
 
 export {
     InputText, 
@@ -21,5 +22,6 @@ export {
     SpeedDial, 
     Knob, 
     TreeSelect, 
-    Checkbox
+    Checkbox, 
+    Carousel
 };
